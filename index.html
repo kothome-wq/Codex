@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Константин Козин - копирайтер</title>
+<meta name="description" content="Копирайтер и редактор Константин Козин: статьи, тексты для сайтов, рассылки и посты. 20 лет в IT - пишу просто о сложном.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #e3e4df;
+  --paper-2: #d6d8d1;
+  --ink: #000;
+  --white: #fff;
+  --marker: #ff6a13;
+  --lilac: #c5b8ff;
+  --mint: #b8ecd0;
+  --muted: #55574f;
+  --display: "Oswald", "Arial Narrow", sans-serif;
+  --text: "Golos Text", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 17px/1.6 var(--text);
+  overflow-x: clip;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--marker); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+/* Шапка */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 0; }
+.logo { font: 700 22px/1 var(--display); text-decoration: none; letter-spacing: .01em; }
+.top nav { display: flex; gap: 28px; font-size: 15px; font-weight: 500; }
+.top nav a { text-decoration: none; }
+.top nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 52px; padding: 0 24px; border-radius: 999px;
+  font: 600 16px/1 var(--text); text-decoration: none; border: 2px solid var(--ink);
+  transition: transform .15s ease;
+}
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn:hover { transform: translateY(-2px); }
+.btn-main { background: var(--ink); color: var(--white); }
+.btn-alt { background: transparent; }
+.btn-small { min-height: 42px; padding: 0 18px; font-size: 15px; }
+
+/* Первый экран */
+.hero { position: relative; padding: 24px 0 72px; }
+.name { margin: 0; font: 700 clamp(64px, 17.4vw, 222px)/.86 var(--display); text-transform: uppercase; letter-spacing: -.01em; }
+.name span { display: block; }
+.name .l2 { display: flex; align-items: center; justify-content: flex-end; gap: clamp(16px, 3vw, 40px); }
+.portrait {
+  width: clamp(96px, 15vw, 200px); height: auto; aspect-ratio: 1; border-radius: 50%;
+  border: 3px solid var(--ink); background: var(--white); object-fit: cover; flex: none;
+}
+.hero-foot { display: grid; grid-template-columns: minmax(0, 560px) 1fr; gap: 40px; margin-top: 40px; align-items: end; }
+.lead { margin: 0 0 28px; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.5; font-weight: 500; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Пометки на полях */
+.note {
+  position: absolute; z-index: 2; margin: 0;
+  padding: 10px 16px; border: 2px solid var(--ink); border-radius: 12px;
+  font: 600 15px/1.25 var(--text); max-width: 220px; background: var(--white);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.note-1 { background: var(--marker); top: 5%; right: 3%; transform: rotate(4deg); }
+.note-2 { background: var(--lilac); top: 38%; left: 6%; transform: rotate(-5deg); }
+.note-3 { background: var(--mint); bottom: 34%; right: 30%; transform: rotate(-3deg); }
+.js .note { opacity: 0; }
+.js .note.on { animation: slap .38s cubic-bezier(.2,1.6,.4,1) forwards; }
+@keyframes slap { from { opacity: 0; scale: 1.35; } to { opacity: 1; scale: 1; } }
+
+/* Лента услуг */
+.services { background: var(--ink); color: var(--white); padding: 56px 0; }
+.services h2 { color: var(--white); }
+.svc { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 40px; }
+.svc li { border-top: 1px solid rgba(255,255,255,.3); padding-top: 14px; }
+.svc b { display: block; font: 500 24px/1.2 var(--display); }
+.svc span { color: #c9cbc3; font-size: 15px; }
+
+/* Разделы */
+.sec { padding: 104px 0 0; }
+h2 { font: 700 clamp(40px, 5.6vw, 76px)/.95 var(--display); text-transform: uppercase; margin: 0; }
+.sub { max-width: 620px; color: var(--muted); margin: 18px 0 0; }
+
+/* Кому пишу */
+.who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.who div { background: var(--white); border: 2px solid var(--ink); border-radius: 20px; padding: 26px 26px 28px; }
+.who div:nth-child(3) { background: var(--marker); }
+.who h3 { font: 500 26px/1.15 var(--display); margin: 0 0 10px; }
+.who p { margin: 0; font-size: 16px; }
+.who a { font-weight: 600; }
+
+/* Работы */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 28px; }
+.filters button {
+  font: 600 15px/1 var(--text); padding: 11px 18px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--ink); background: transparent; color: var(--ink);
+}
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.filters sup { font-size: 11px; margin-left: 4px; }
+.works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.work {
+  display: flex; flex-direction: column; min-height: 250px; padding: 22px 22px 20px;
+  border-radius: 20px; background: var(--white); text-decoration: none; border: 2px solid var(--ink);
+}
+.work[hidden] { display: none; }
+.work .where { font: 500 15px/1 var(--display); letter-spacing: .02em; color: var(--muted); }
+.work .t { font: 500 clamp(22px, 2vw, 27px)/1.15 var(--display); margin: 14px 0 8px; }
+.work .d { font-size: 15px; color: var(--muted); margin: 0; }
+.work .k { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; }
+.work .k em { font-style: normal; background: var(--paper); border-radius: 999px; padding: 4px 10px; }
+a.work:hover { background: var(--ink); color: var(--white); }
+a.work:hover .where, a.work:hover .d { color: #c9cbc3; }
+a.work:hover .k em { background: var(--marker); color: var(--ink); }
+.work.big { grid-column: span 2; background: var(--lilac); }
+.work.big .t { font-size: clamp(30px, 3.4vw, 46px); }
+.work.nda { background: transparent; border-style: dashed; grid-column: 1 / -1; min-height: 0; }
+.works-note { color: var(--muted); max-width: 720px; margin: 24px 0 0; font-size: 15px; }
+
+/* Как работаю */
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 3px solid var(--ink); padding-top: 14px; }
+.steps li::before { content: counter(s); display: block; font: 700 44px/1 var(--display); margin-bottom: 10px; }
+.steps b { display: block; font-size: 18px; margin-bottom: 4px; }
+.steps span { font-size: 15px; color: var(--muted); }
+
+/* Кейс */
+.case { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: start; }
+.result { background: var(--marker); border: 2px solid var(--ink); border-radius: 24px; padding: 32px; box-shadow: 6px 6px 0 var(--ink); transform: rotate(-2deg); }
+.result p { margin: 0; }
+.result .big { font: 700 clamp(44px, 5vw, 68px)/.95 var(--display); text-transform: uppercase; margin-bottom: 14px; }
+.case dl { margin: 24px 0; }
+.case dt { font-weight: 600; margin-top: 16px; }
+.case dd { margin: 4px 0 0; color: var(--muted); }
+
+/* Словарик */
+.gloss { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; margin: 36px 0 0; }
+.gloss div { padding: 16px 0; border-bottom: 1px solid #b5b8ae; display: grid; grid-template-columns: 170px 1fr; gap: 16px; }
+.gloss dt { font: 500 20px/1.3 var(--display); }
+.gloss dd { margin: 0; font-size: 16px; }
+
+/* Вопросы */
+.faq { margin-top: 36px; max-width: 860px; }
+.faq details { border-bottom: 2px solid var(--ink); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 44px 20px 0; position: relative; font: 500 23px/1.3 var(--display); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-size: 32px; transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq p { margin: 0 0 22px; max-width: 700px; }
+
+/* Контакты */
+.contact { margin-top: 120px; background: var(--ink); color: var(--white); padding: 88px 0 40px; }
+.contact h2 { color: var(--white); max-width: 900px; }
+.contact p { color: #c9cbc3; margin: 20px 0 32px; max-width: 560px; }
+.contact .btn-main { background: var(--marker); color: var(--ink); border-color: var(--marker); }
+.contact .btn-alt { border-color: var(--white); color: var(--white); }
+.foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 80px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.25); font-size: 14px; color: #9a9c94; }
+
+@media (max-width: 980px) {
+  .top nav { display: none; }
+  .hero-foot, .case { grid-template-columns: 1fr; }
+  .svc, .who { grid-template-columns: 1fr 1fr; }
+  .works { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr 1fr 1fr; row-gap: 28px; }
+  .gloss { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .notes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .note { position: static; transform: none; box-shadow: 3px 3px 0 var(--ink); font-size: 14px; }
+  .note-2 { transform: rotate(-2deg); }
+  .note-1 { transform: rotate(2deg); }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .top .btn-small span { display: none; }
+  .svc, .who, .works { grid-template-columns: 1fr; }
+  .work.big { grid-column: auto; }
+  .work { min-height: 0; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .gloss div { grid-template-columns: 1fr; gap: 4px; }
+  .actions .btn { width: 100%; justify-content: center; }
+  .top .btn-small { width: 44px; min-height: 44px; padding: 0; justify-content: center; }
+  .sec { padding-top: 80px; }
+  .result { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .note { opacity: 1; }
+  .js .note.on { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 4.2 2.9 11.4c-1.3.5-1.3 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.8.8.5 0 .7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.5c.3-1.3-.5-1.9-1.4-1.6Zm-3.6 3.3-8.9 8-.3 3.4-1.5-4.7 10.4-6.6c.4-.3.8-.1.3-.1Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top">Козин</a>
+    <nav aria-label="Разделы">
+      <a href="#works">Работы</a>
+      <a href="#how">Как работаю</a>
+      <a href="#words">Словарик</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn btn-main btn-small" aria-label="Написать в Телеграм" href="https://t.me/kothome" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg><span>Написать в Телеграм</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1 class="name" aria-label="Константин Козин, копирайтер и редактор">
+        <span>Константин</span>
+        <span class="l2"><img class="portrait" src="https://static.tildacdn.pub/tild3466-3264-4137-b733-623064343230/loonapix_16648883496.png" alt="" width="200" height="200"><span>Козин</span></span>
+      </h1>
+      <div class="notes">
+        <p class="note note-1">Копирайтер и редактор</p>
+        <p class="note note-2">20 лет работал в IT</p>
+        <p class="note note-3">Самозанятый, работаю по договору</p>
+      </div>
+      <div class="hero-foot">
+        <div>
+          <p class="lead">Пишу статьи, тексты для сайтов, рассылки и посты. Сложное объясняю простыми словами, а в новой теме быстро разбираюсь.</p>
+          <div class="actions">
+            <a class="btn btn-main" href="https://t.me/kothome" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написать в Телеграм</a>
+            <a class="btn btn-alt" href="mailto:suptmmy@gmail.com?subject=%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%80%D0%B0%D0%B9%D1%82%D0%B5%D1%80%D0%B0"><svg aria-hidden="true"><use href="#i-mail"/></svg>Написать на почту</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<section class="services" aria-labelledby="s-svc">
+  <div class="wrap">
+    <h2 id="s-svc">Что пишу</h2>
+    <ul class="svc">
+      <li><b>Статьи для сайтов и блогов</b><span>В том числе статьи, которые находят в Яндексе и Google</span></li>
+      <li><b>Тексты для сайтов</b><span>Одностраничные сайты и страницы о компании, с готовой схемой блоков</span></li>
+      <li><b>Рассылки</b><span>Письма подписчикам: от приветствия до напоминания о брошенной корзине</span></li>
+      <li><b>Посты для соцсетей и Телеграма</b><span>Продающие, полезные и экспертные</span></li>
+      <li><b>Редактура</b><span>Делаю чужой текст понятным, короче и без ошибок</span></li>
+      <li><b>Доработка переводов</b><span>Чтобы текст звучал так, будто его написали по-русски</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" aria-labelledby="s-who">
+    <h2 id="s-who">Кому пишу</h2>
+    <div class="who">
+      <div>
+        <h3>Медиа и агентства</h3>
+        <p>Статьи для блога Ростелекома, МТС Медиа, Doma.ai и журнала «Берза». Работал с агентствами «Диджитал Профит» и Nevsky Agency.</p>
+      </div>
+      <div>
+        <h3>Онлайн-школы и эксперты</h3>
+        <p>Анонсы курсов, рассылки к запуску, приглашения на вебинары, самопрезентации специалистов.</p>
+      </div>
+      <div>
+        <h3>Небольшой бизнес</h3>
+        <p>Текст о компании, описание для Яндекс Карт, посты и рассылки для постоянных клиентов. Пример: <a href="https://docs.google.com/document/d/1o9TqaaPsifWwoR84USdIgIZTPbZNvYeVGqJ34Q2OFsg/edit?usp=sharing" target="_blank" rel="noopener">«О компании» без воды</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="works" aria-labelledby="s-works">
+    <h2 id="s-works">Работы</h2>
+    <p class="sub">Каждая карточка открывает готовый текст.</p>
+    <div class="filters" role="group" aria-label="Фильтр работ">
+      <button type="button" data-f="all" aria-pressed="true">Все</button>
+      <button type="button" data-f="articles" aria-pressed="false">Статьи</button>
+      <button type="button" data-f="landing" aria-pressed="false">Сайты</button>
+      <button type="button" data-f="mail" aria-pressed="false">Рассылки и соцсети</button>
+      <button type="button" data-f="edit" aria-pressed="false">Редактура</button>
+    </div>
+    <div class="works">
+      <a class="work big" data-cat="mail landing" href="https://vk.com/@3dmodelah-obnovlennyi-kurs-pro-3d-stok-kotoryi-pozvolit-vam-zarabatyva" target="_blank" rel="noopener"><span class="where">vk.com - школа AlexHappy</span><span class="t">Анонс курса: десятки продаж в первый час запуска</span><p class="d">Анонс, рассылки и пояснения для курса по 3D-моделированию</p><span class="k"><em>Запуск курса</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://blog.rt.ru/b2c/kak-poyavilis-qr-kody-i-kak-oni-rabotayut.htm" target="_blank" rel="noopener"><span class="where">blog.rt.ru</span><span class="t">История QR-кодов и как они работают</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://media.mts.ru/technologies/204680-kadastrovaya-stoimost" target="_blank" rel="noopener"><span class="where">media.mts.ru</span><span class="t">Кадастровая стоимость жилья - что это?</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <a class="work" data-cat="mail" href="https://docs.google.com/document/d/1ipkfeKhBm4akGKb8BfwcAFpjgrZkK__7FtYUM4wxqYs/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">«Посади Лес»</span><span class="t">Цепочка из пяти писем</span><p class="d">Подтверждение регистрации, приветствие, услуги, брошенная корзина, возвращение клиента</p><span class="k"><em>Рассылка</em>Открыть</span></a>
+      <a class="work" data-cat="edit" href="https://docs.google.com/document/d/1ZOW43UfMAg2wgO216cKIahuxUutPVegxWFPVnNqcTFc/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">Редактура</span><span class="t">8,4 балла по Главреду после правки</span><p class="d">Убрал лишнее, разбил на смысловые блоки</p><span class="k"><em>Редактура</em>Открыть</span></a>
+      <a class="work" data-cat="landing" href="https://docs.google.com/presentation/d/1yl0AnBa-_xoU7J3lwhjEwG87E0ZKWptlZHjgM1Et4g4/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">«Посади Лес»</span><span class="t">Схема одностраничного сайта</span><p class="d">Сертификаты на посадку деревьев в подарок</p><span class="k"><em>Сайт</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://blog.rt.ru/b2c/7-perspektivnyh-tehnologicheskih-startapov-2025-goda.htm" target="_blank" rel="noopener"><span class="where">blog.rt.ru</span><span class="t">Перспективные технологические стартапы 2025 года</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <a class="work" data-cat="edit" href="https://docs.google.com/document/d/1BzatLdYXSa8IX4tT--21iGnl6njrt9gh_3f66I6D8Pw/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">Доработка перевода</span><span class="t">Исправление машинного перевода</span><p class="d">Текст звучит так, будто его написал русскоязычный автор</p><span class="k"><em>Редактура</em>Открыть</span></a>
+      <a class="work" data-cat="mail" href="https://docs.google.com/document/d/1wmqmaetPFzbFA9gpRSTKZffpm1uY4ksdkRdfqHRoCKE/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">«Посади Лес»</span><span class="t">Три поста: продающий, экспертный, полезный</span><p class="d">Для аудитории 40+, которой надоели стандартные подарки</p><span class="k"><em>Соцсети</em>Открыть</span></a>
+      <a class="work" data-cat="mail" href="https://docs.google.com/document/d/1qZ6Yr0tYyCDD60YTwhZPkzsmmPYyoG_NePgAtJbV9z4/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">Вебинар</span><span class="t">Приглашение на практический вебинар</span><p class="d">Для собственников малого бизнеса</p><span class="k"><em>Приглашение</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://doma.ai/blog/iski-k-fondu-kapremonta" target="_blank" rel="noopener"><span class="where">doma.ai</span><span class="t">Судебная практика по искам к фонду капремонта</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://docs.google.com/document/d/1o9TqaaPsifWwoR84USdIgIZTPbZNvYeVGqJ34Q2OFsg/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">«Посади Лес»</span><span class="t">О компании - без воды и канцелярита</span><span class="k"><em>О компании</em>Открыть</span></a>
+      <a class="work" data-cat="edit articles" href="https://berza.ru/author/suptmmy/" target="_blank" rel="noopener"><span class="where">berza.ru</span><span class="t">Научные открытия простым языком</span><p class="d">Пересказ исследований для специалистов и учёных</p><span class="k"><em>Пересказ</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://docs.google.com/document/d/1TQNe5-9EnN_ZVctub4nT5Pzsbz0hDGDi4J1vXqSFxaY/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">«Диджитал Профит»</span><span class="t">Виды мошенничества с банковскими картами</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <a class="work" data-cat="mail" href="https://docs.google.com/document/d/1hxmUz0fjWznYWbJyGWYP9BmsG9Bd1w00vLJKxd8UKco/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">«Посади Лес»</span><span class="t">Слоганы для бренда и продукта</span><p class="d">Как рождались варианты</p><span class="k"><em>Слоганы</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://docs.google.com/document/d/1WrXm6twR-Pi5YK0jCmh5QhVpiSG7kK31HGn39XO8ihs/edit?usp=sharing" target="_blank" rel="noopener"><span class="where">блог Synergy</span><span class="t">Какими натуральными средствами ухаживали за собой в древности</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <a class="work" data-cat="articles" href="https://disk.yandex.ru/i/doZxHWp-EIiYMg" target="_blank" rel="noopener"><span class="where">биржа «Флоу»</span><span class="t">Почему программисту нужно знать английский</span><span class="k"><em>Статья</em>Открыть</span></a>
+      <div class="work nda" data-cat="landing"><span class="where">Nevsky Agency</span><span class="t">Корпоративные сайты и одностраничники</span><p class="d">Тексты страниц и улучшение брифов компании</p><span class="k"><em>Сайты</em>Под соглашением о неразглашении</span></div>
+    </div>
+    <p class="works-note">И ещё десятки статей: IT, финансы и бухгалтерия, лайфстайл, онлайн-курсы. По договору права на многие тексты у агентства - исходники покажу по запросу.</p>
+  </section>
+
+  <section class="sec" id="how" aria-labelledby="s-how">
+    <h2 id="s-how">Как работаю</h2>
+    <ol class="steps">
+      <li><b>Задаю вопросы</b><span>Узнаю о задаче, клиентах и о том, что должен сделать читатель</span></li>
+      <li><b>Присылаю «Понимание задачи»</b><span>Короткий документ, чтобы мы одинаково видели цель до начала работы</span></li>
+      <li><b>Пишу текст</b><span>Изучаю тему и пишу простыми словами</span></li>
+      <li><b>Проверяю</b><span>Стиль - в сервисе Главред, от 8 баллов. Грамотность - в Орфограммке</span></li>
+      <li><b>Правлю</b><span>Сколько нужно, пока результат вас не устроит</span></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="case" aria-labelledby="s-case">
+    <div class="case">
+      <div class="result">
+        <p class="big">Десятки продаж в первый час</p>
+        <p>после запуска курса школы AlexHappy</p>
+      </div>
+      <div>
+        <h2 id="s-case">Анонс курса по 3D-моделированию</h2>
+        <dl>
+          <dt>Задача</dt><dd>Начинающим 3D-моделлерам отказывают на фотостоках без объяснения причин. Автор создал курс, который это решает, и пришёл за текстами к старту продаж.</dd>
+          <dt>Для кого</dt><dd>Моделлеры с опытом - им не нужно объяснять базовые понятия.</dd>
+          <dt>Что сделал</dt><dd>Выяснил, что больше всего беспокоит читателей, и построил текст вокруг этого. Через опыт автора показал путь к моделям, которые проходят проверку с первого раза. Написал анонс, рассылки и пояснения.</dd>
+        </dl>
+        <a class="btn btn-alt" href="https://vk.com/@3dmodelah-obnovlennyi-kurs-pro-3d-stok-kotoryi-pozvolit-vam-zarabatyva" target="_blank" rel="noopener">Прочитать анонс</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="words" aria-labelledby="s-words">
+    <h2 id="s-words">Словарик</h2>
+    <p class="sub">Слова, которые часто звучат в разговоре о текстах. Если встретите непонятное - спросите, объясню.</p>
+    <dl class="gloss">
+      <div><dt>Лендинг</dt><dd>Одностраничный сайт, который рассказывает об одном товаре или услуге и ведёт к заявке.</dd></div>
+      <div><dt>SEO-статья</dt><dd>Статья, которую легче найти в Яндексе и Google по нужным запросам.</dd></div>
+      <div><dt>Рассылка</dt><dd>Письма, которые получают подписчики и клиенты по почте.</dd></div>
+      <div><dt>Главред</dt><dd>Сервис, который находит в тексте лишние и пустые слова и ставит оценку от 0 до 10.</dd></div>
+      <div><dt>Орфограммка</dt><dd>Сервис проверки орфографии и пунктуации.</dd></div>
+      <div><dt>Кейс</dt><dd>Рассказ о выполненной работе: какая была задача, что сделано и что получилось.</dd></div>
+      <div><dt>Рерайт</dt><dd>Пересказ готового текста своими словами.</dd></div>
+      <div><dt>Самозанятый</dt><dd>Человек, который работает официально и платит налог с каждой оплаты. Клиенту приходит чек.</dd></div>
+    </dl>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="s-faq">
+    <h2 id="s-faq">Вопросы</h2>
+    <div class="faq">
+      <details open><summary>С чего начинается работа?</summary><p>С вопросов о задаче и документа «Понимание задачи». Присылаю его до старта, чтобы не переделывать текст из-за недопонимания.</p></details>
+      <details><summary>Сколько будет правок?</summary><p>Не ограничиваю. Работаю, пока результат вас не устроит.</p></details>
+      <details><summary>Работаете официально?</summary><p>Да, я самозанятый: присылаю чек за каждую оплату. Заключаем договор с передачей прав на текст, для мелких задач можно без него.</p></details>
+      <details><summary>Можно заказать текст не про IT?</summary><p>Да. Опыт в IT помогает с технологиями, но я быстро разбираюсь и в других темах: финансы, недвижимость, благотворительность, онлайн-курсы, небольшой бизнес.</p></details>
+      <details><summary>Как с вами связаться?</summary><p>Напишите в Телеграм @kothome или на почту suptmmy@gmail.com. Коротко расскажите о задаче - отвечу и задам вопросы.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="contact" id="contact" aria-labelledby="s-contact">
+  <div class="wrap">
+    <h2 id="s-contact">Расскажите о задаче - предложу, как решить её текстом</h2>
+    <p>Быстрее всего отвечаю в Телеграме @kothome. Почта: suptmmy@gmail.com</p>
+    <div class="actions">
+      <a class="btn btn-main" href="https://t.me/kothome" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написать в Телеграм</a>
+      <a class="btn btn-alt" href="mailto:suptmmy@gmail.com?subject=%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%80%D0%B0%D0%B9%D1%82%D0%B5%D1%80%D0%B0"><svg aria-hidden="true"><use href="#i-mail"/></svg>Написать на почту</a>
+    </div>
+    <div class="foot"><span>© 2026 Константин Козин</span><span>Работаю как самозанятый</span></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var btns = document.querySelectorAll('.filters button');
+  var works = document.querySelectorAll('.work');
+  function has(w, f) { return w.dataset.cat.split(' ').indexOf(f) !== -1; }
+  btns.forEach(function (b) {
+    var f = b.dataset.f;
+    var n = f === 'all' ? works.length : Array.prototype.filter.call(works, function (w) { return has(w, f); }).length;
+    var s = document.createElement('sup'); s.textContent = n; b.appendChild(s);
+    b.addEventListener('click', function () {
+      btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      works.forEach(function (w) { w.hidden = f !== 'all' && !has(w, f); });
+    });
+  });
+
+  // Пометки «приклеиваются» по очереди - один раз при загрузке
+  var notes = document.querySelectorAll('.note');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  notes.forEach(function (n, i) {
+    if (reduce) { n.classList.add('on'); return; }
+    setTimeout(function () { n.classList.add('on'); }, 500 + i * 260);
+  });
+})();
+</script>
+</body>
+</html>
